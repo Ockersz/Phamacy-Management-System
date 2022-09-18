@@ -1,0 +1,10 @@
+In order to the program to work correctly,
+
+
+1.copy the Images folder and paste it to C drive.
+2.The database should be imported and executed.
+3.Goto MyDBConnection in sourcecodes and change 
+	the connection string as required.
+
+username : ockersz
+password : 2001

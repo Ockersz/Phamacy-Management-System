@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="a1f012c6-4af7-4987-863d-1aa3f92b3f09">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="from_date" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="to_date" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[Select * from orders
+where order_date between $P{from_date} and $P{to_date}]]>
+	</queryString>
+	<field name="oid" class="java.lang.Integer">
+		<fieldDescription><![CDATA[Order ID number]]></fieldDescription>
+	</field>
+	<field name="order_date" class="java.sql.Timestamp">
+		<fieldDescription><![CDATA[Order date]]></fieldDescription>
+	</field>
+	<field name="price" class="java.lang.Integer">
+		<fieldDescription><![CDATA[Order total price]]></fieldDescription>
+	</field>
+	<field name="eno" class="java.lang.Integer">
+		<fieldDescription><![CDATA[Employee ID number]]></fieldDescription>
+	</field>
+	<variable name="price_1" class="java.lang.Integer" resetType="Column" calculation="Sum">
+		<variableExpression><![CDATA[$F{price}]]></variableExpression>
+	</variable>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="118" splitType="Stretch">
+			<image>
+				<reportElement x="5" y="6" width="545" height="111" uuid="9a4824b7-7276-478c-8db1-4246289d3bfb"/>
+				<imageExpression><![CDATA["C:\\Users\\Ockersz\\Desktop\\NIBM\\EAD\\EAD_CW\\src\\ImagesAndIcons\\Untitled-1.jpg"]]></imageExpression>
+			</image>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="48" splitType="Stretch">
+			<staticText>
+				<reportElement x="200" y="0" width="174" height="35" uuid="249e9394-591c-43f2-a1eb-c939f8642598"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="24" isBold="false" isUnderline="true"/>
+				</textElement>
+				<text><![CDATA[Monthly Sales Report]]></text>
+			</staticText>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="41" splitType="Stretch">
+			<staticText>
+				<reportElement x="25" y="21" width="123" height="20" uuid="3e8b5533-2a25-4194-a9ae-0698a3055355"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<text><![CDATA[Order ID number]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="427" y="21" width="123" height="20" uuid="42da500d-2d32-440a-a868-6cca812a65fb"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<text><![CDATA[Order total price]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="239" y="21" width="123" height="20" uuid="663c5e0b-2587-4634-948c-9dc5915222db"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<text><![CDATA[Order date]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="51" splitType="Stretch">
+			<textField>
+				<reportElement x="25" y="16" width="100" height="20" uuid="b5321ccb-66c9-4523-8f64-bcfe70f656aa"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{oid}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="427" y="16" width="100" height="20" uuid="70a17355-602e-434d-bcb1-56e70ef1fed6"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{price}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="239" y="16" width="100" height="20" uuid="ecebde58-3ddf-4ac2-b734-e4f4534ff700"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{order_date}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="20" splitType="Stretch">
+			<textField>
+				<reportElement x="427" y="0" width="100" height="20" uuid="c54120fb-c491-4e66-be87-0e1795562dc5"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{price_1}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="310" y="0" width="100" height="20" uuid="bef5fb8f-0242-4595-a9d1-fd89dd1b3611"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<text><![CDATA[Total Income :]]></text>
+			</staticText>
+		</band>
+	</columnFooter>
+	<pageFooter>
+		<band height="20" splitType="Stretch">
+			<staticText>
+				<reportElement x="175" y="0" width="235" height="20" uuid="c1ccf054-b871-4091-822f-b4291671ac11"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<text><![CDATA[SOFTWARE BY CODSE212F-003]]></text>
+			</staticText>
+		</band>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>
